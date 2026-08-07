@@ -1,12 +1,11 @@
 {
-    "configurations": [
-        {
-            "name": "Run Android Hermes",
-            "request": "launch",
-            "type": "reactnativedirect",
-            "cwd": "${workspaceFolder}",
-            "enableDebug": false,
-            "platform": "android"
-        }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Expo App",
+      "type": "expo",
+      "request": "launch",
+      "preLaunchTask": "Expo Start Clear Cache"
+    }
+  ]
 }
