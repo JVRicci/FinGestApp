@@ -16,15 +16,15 @@ export default function Index ({ data }: { data: (BillsDTO | IncomeDTO) }){
     const movementTextColor: String = 'type' in data ? 'red-700' : 'green-700'
 
     return (
-        <TouchableOpacity className="border-b border-slate-300 mt-4" onPress={() => setVisible(!visible)}>
-            <Text>{formattedDate}</Text>
-            <View className="flex-row justify-between mt-8 mb-2">
-                <Text className="text-xl font-bold">{data.description}</Text>
+        <TouchableOpacity className="border-b border-slate-300 mt-10" onPress={() => setVisible(!visible)}>
+            <Text className="text-xl font-bold">{data.description}</Text>
+            <View className="flex-row justify-between mt-4 mb-2">
+                <Text>{formattedDate}</Text>
                 {
                     visible ?
-                        <Text className={`text-${movementTextColor}`}> R$ {movementValue}</Text>
+                    <Text className={`text-${movementTextColor}`}> R$ {movementValue}</Text>
                     :
-                        <View className=" bg-zinc-300 w-[20%] h-[75%] rounded-md"></View>
+                    <View className=" bg-zinc-300 w-[20%] h-[75%] rounded-md"></View>
                 }
             </View>
         </TouchableOpacity>

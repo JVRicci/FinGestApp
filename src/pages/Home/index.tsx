@@ -1,13 +1,14 @@
 import Actions from '@/components/Actions';
 import Balance from "@/components/Balance";
 import Header from "@/components/Header";
-import Movements from "@/components/Movements";
+import MovementList from '@/components/MovementList';
 import { bills } from "@/data/bills";
 import { incomes } from "@/data/incomes";
 import { BillsDTO } from "@/schemas/billsSchema";
 import { IncomeDTO } from "@/schemas/incomeSchema";
+import movementsSorted from '@/utils/dateSort';
 import { useState } from "react";
-import { FlatList, Text, View } from "react-native";
+import { Text, View } from "react-native";
 
 
 export default function Home() {
@@ -17,22 +18,16 @@ export default function Home() {
 
     const totalMovements : (BillsDTO | IncomeDTO)[] = [...bills, ...incomes];
 
-    return (
-      <View className="">
-        <Header username={username} />
-        <Balance balance={balance} expenses={expenses} />
-        <Actions />
+    const movementsOrd: (BillsDTO | IncomeDTO)[] = movementsSorted(totalMovements)
 
-        <Text className="text-2xl font-bold mx-14 mt-14">Ultimas Movimentações</Text>
-        <FlatList 
-              className= "mx-14" 
-              data={totalMovements}
-              keyExtractor={(item: BillsDTO | IncomeDTO) => String(item.id)}
-              showsVerticalScrollIndicator={false}
-              renderItem={({item}: {item: BillsDTO | IncomeDTO}) => (
-                  <Movements data={item}/>
-              )}
-          />
-      </View>
+    return (
+        <View className="">
+            <Header username={username} />
+            <Balance balance={balance} expenses={expenses} />
+            <Actions />
+
+            <Text className="text-2xl font-bold mx-14 mt-14">Ultimas Movimentações</Text>
+            <MovementList movements={movementsOrd.slice(0, 5)}/>
+        </View>
     );
 }
