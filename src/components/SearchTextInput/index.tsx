@@ -3,9 +3,9 @@ import { AntDesign } from "@expo/vector-icons";
 import { TextInput, View } from "react-native";
 
 type SearchTextInputProps = {
-  value: string;
-  onChangeText: (text: string) => void;
-  onClear: () => void;
+    value: string;
+    onChangeText: (text: string) => void;
+    onClear: () => void;
 };
 
 export default function SearchTextInput({ value, onChangeText, onClear } : SearchTextInputProps) {
