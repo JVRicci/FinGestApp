@@ -1,10 +1,12 @@
 import { AntDesign } from "@expo/vector-icons";
-import { router } from "expo-router";
 import { useEffect, useState } from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import Animated, { FadeIn } from "react-native-reanimated";
 
-export default function Index() {
+import IActionButtonData from '@/schemas/ActionButton';
+
+
+export default function Index({ActionData} :{ ActionData :  IActionButtonData[]} ) {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -15,45 +17,13 @@ export default function Index() {
     return () => clearTimeout(timer);
   }, []);
 
-  const buttonData: {
-    id: number;
-    icon: string;
-    label: string;
-    buttonFunction: () => void;
-  }[] = [
-    {
-      id: 1,
-      icon: "folder",
-      label: "Entradas",
-      buttonFunction: () => router.push("/entries"),
-    },
-    {
-      id: 2,
-      icon: "tag",
-      label: "Compras",
-      buttonFunction: () => console.log("Ok"),
-    },
-    {
-      id: 3,
-      icon: "wallet",
-      label: "Carteira",
-      buttonFunction: () => console.log("Ok"),
-    },
-    {
-      id: 4,
-      icon: "barcode",
-      label: "Boleto",
-      buttonFunction: () => console.log("Ok"),
-    },
-  ];
-
   return (
     <ScrollView
       className="mt-10 ps-14 pe-14"
       horizontal={true}
       showsHorizontalScrollIndicator={false}
     >
-      {buttonData.map((item) => (
+      {ActionData.map((item) => (
         <Animated.View key={item.id} entering={FadeIn.duration(300)}>
           <TouchableOpacity
             onPress={item.buttonFunction}

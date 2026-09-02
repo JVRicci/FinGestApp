@@ -4,9 +4,11 @@ import Header from "@/components/Header";
 import MovementList from '@/components/MovementList';
 import { bills } from "@/data/bills";
 import { incomes } from "@/data/incomes";
+import IActionButtonData from '@/schemas/ActionButton';
 import { BillsDTO } from "@/schemas/billsSchema";
 import { IncomeDTO } from "@/schemas/incomeSchema";
 import movementsSorted from '@/utils/dateSort';
+import { router } from "expo-router";
 import { useState } from "react";
 import { Text, View } from "react-native";
 
@@ -20,11 +22,38 @@ export default function Home() {
 
     const movementsOrd: (BillsDTO | IncomeDTO)[] = movementsSorted(totalMovements)
 
+    const ActionData: IActionButtonData[] = [
+        {
+            id: 1,
+            icon: "folder",
+            label: "Entradas",
+            buttonFunction: () => router.push("/entries"),
+        },
+        {
+            id: 2,
+            icon: "tag",
+            label: "Compras",
+            buttonFunction: () => console.log("Ok"),
+        },
+        {
+            id: 3,
+            icon: "wallet",
+            label: "Carteira",
+            buttonFunction: () => console.log("Ok"),
+        },
+        {
+            id: 4,
+            icon: "barcode",
+            label: "Boleto",
+            buttonFunction: () => console.log("Ok"),
+        },
+    ];
+
     return (
         <View className="">
             <Header username={username} />
             <Balance balance={balance} expenses={expenses} />
-            <Actions />
+            <Actions ActionData = {ActionData}/>
 
             <Text className="text-2xl font-bold mx-14 mt-14">Ultimas Movimentações</Text>
             <MovementList movements={movementsOrd.slice(0, 5)}/>
