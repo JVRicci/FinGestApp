@@ -3,8 +3,12 @@ import { useEffect, useState } from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import Animated, { FadeIn } from "react-native-reanimated";
 
-import IActionButtonData from '@/schemas/ActionButton';
-
+interface IActionButtonData {
+    id: number;
+    icon: string;
+    label: string;
+    buttonFunction: () => void;
+}
 
 export default function Index({ActionData} :{ ActionData :  IActionButtonData[]} ) {
   const [loaded, setLoaded] = useState(false);
