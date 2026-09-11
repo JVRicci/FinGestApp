@@ -1,4 +1,4 @@
-import { BalanceDTO } from "@/schemas/balanceSchema";
+import { BalanceDTO } from "@/schemas/balanceDTO";
 import currencyFormatter from "@/utils/currencyFormatter";
 import { Text, View } from 'react-native';
 

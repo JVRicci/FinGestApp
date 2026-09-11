@@ -1,5 +1,5 @@
-import { BillsDTO } from "@/schemas/billsSchema"
-import { IncomeDTO } from "@/schemas/incomeSchema"
+import { BillsDTO } from "@/schemas/billsDTO"
+import { IncomeDTO } from "@/schemas/incomeDTO"
 
 const dataExtraction = (date: any) : Date => {
     return 'dueDate' in date ? date.dueDate : date.receivedDate

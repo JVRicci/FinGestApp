@@ -1,4 +1,4 @@
-import { BillsDTO } from "@/schemas/billsSchema";
+import { BillsDTO } from "@/schemas/billsDTO";
 
 
 

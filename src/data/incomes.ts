@@ -1,4 +1,4 @@
-import { IncomeDTO } from "@/schemas/incomeSchema";
+import { IncomeDTO } from "@/schemas/incomeDTO";
 
 export const incomes: IncomeDTO[] = [
     {

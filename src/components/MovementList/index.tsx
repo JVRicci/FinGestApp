@@ -1,6 +1,6 @@
 import Movements from "@/components/Movements";
-import { BillsDTO } from "@/schemas/billsSchema";
-import { IncomeDTO } from "@/schemas/incomeSchema";
+import { BillsDTO } from "@/schemas/billsDTO";
+import { IncomeDTO } from "@/schemas/incomeDTO";
 import { FlatList } from 'react-native';
 
 interface IMovementList {

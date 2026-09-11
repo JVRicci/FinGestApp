@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const billsSchema = z.object({
+export const billsDTO = z.object({
     id: z.uuid(),
     description: z.string().min(1, 'Description is required'),
     amount: z.number().positive('Amount must be positive'),
@@ -9,4 +9,4 @@ export const billsSchema = z.object({
     type: z.enum(['expense', 'income']),
 });
 
-export type BillsDTO = z.infer<typeof billsSchema>;
+export type BillsDTO = z.infer<typeof billsDTO>;

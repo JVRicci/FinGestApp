@@ -1,5 +1,5 @@
-import { BillsDTO } from "@/schemas/billsSchema";
-import { IncomeDTO } from "@/schemas/incomeSchema";
+import { BillsDTO } from "@/schemas/billsDTO";
+import { IncomeDTO } from "@/schemas/incomeDTO";
 import currencyFomatter from '@/utils/currencyFormatter';
 import dateFormatter from '@/utils/dateFormatter';
 import { useState } from "react";
