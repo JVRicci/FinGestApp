@@ -21,12 +21,13 @@ export const incomeModel = sqliteTable("incomes", {
         .notNull(),
     status: text("status")
         .$type<status>()
-        .$defaultFn(()=>"pending")
+        .default("pending")
         .notNull(),
     frequency: text("frequency")
         .$type<frequency>()
-        .$defaultFn(() =>'daily')
+        .default('daily')
         .notNull(),
+
     paymentMethod: text("payment_method")
         .$type<paymentMethod>(),
 
