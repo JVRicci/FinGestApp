@@ -7,6 +7,11 @@ module.exports = function (api) {
     ],
     plugins: [
       "react-native-reanimated/plugin",
+      ["babel-plugin-inline-import",
+        {
+          extensions: [".sql"]
+        }
+      ]
     ],
   };
 };

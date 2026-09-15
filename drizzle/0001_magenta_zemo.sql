@@ -1,0 +1,1 @@
+ALTER TABLE `incomes` ADD `frequency` text NOT NULL;
