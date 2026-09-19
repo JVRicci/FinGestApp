@@ -41,12 +41,6 @@ export default function Home() {
             label: "Carteira",
             buttonFunction: () => console.log("Ok"),
         },
-        {
-            id: 4,
-            icon: "barcode",
-            label: "Boleto",
-            buttonFunction: () => console.log("Ok"),
-        },
     ];
 
     return (

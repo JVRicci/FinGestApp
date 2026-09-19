@@ -62,7 +62,7 @@ export default function EntriesForm ({ isVisible, onClose }: IEntriesForm) {
             <PaperProvider
                 theme = {MD3LightTheme}
             >
-                <View className=" my-[65%] mx-auto bg-zinc-50 rounded-xl py-8">
+                <View className=" my-[50%] mx-auto bg-zinc-50 rounded-xl py-8">
                     <View className="flex flex-row items-center gap-6 mb-8 justify-between px-14">
                         <Text className="text-2xl text-bold">
                             Adicionar receita
@@ -111,7 +111,7 @@ export default function EntriesForm ({ isVisible, onClose }: IEntriesForm) {
                             label= "Valor recebido"
                             keyboardType="numeric"
                             currency
-                            rules={{required:"Insira um valor recebido", minValue: 3}}
+                            rules={{required:"Insira um valor recebido"}}
                         />
                         
                         <TouchableOpacity
