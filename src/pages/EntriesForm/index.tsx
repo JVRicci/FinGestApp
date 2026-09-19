@@ -5,7 +5,7 @@ import dateFormatter from "@/utils/dateFormatter"
 import { useForm } from 'react-hook-form'
 import { Alert, Text, TouchableOpacity, View } from "react-native"
 import Modal from 'react-native-modal'
-import { Provider as PaperProvider } from 'react-native-paper'
+import { MD3LightTheme, Provider as PaperProvider } from 'react-native-paper'
 
 interface IFormInputs {
     description: string,
@@ -59,19 +59,17 @@ export default function EntriesForm ({ isVisible, onClose }: IEntriesForm) {
             avoidKeyboard
             className="flex-1 m-0 justify-center items-center"
         >
-            <PaperProvider>
+            <PaperProvider
+                theme = {MD3LightTheme}
+            >
                 <View className=" my-[65%] mx-auto bg-zinc-50 rounded-xl py-8">
                     <View className="flex flex-row items-center gap-6 mb-8 justify-between px-14">
-                        <Text className="text-2xl text-bold">Adicionar receita</Text>
+                        <Text className="text-2xl text-bold">
+                            Adicionar receita
+                        </Text>
                     </View>
                 
-                    <View className="ps-14 pe-14">
-                        <DateInput 
-                            label="Data de recebimento" 
-                            name="date" 
-                            control={control} 
-                            rules={{required: "Adicione uma data"}} 
-                        />
+                    <View className="ps-14 pe-14 gap-4">
                         
                         <ControlledInput 
                             control={control} 
@@ -89,6 +87,15 @@ export default function EntriesForm ({ isVisible, onClose }: IEntriesForm) {
                             required={true}
                         />
 
+                        <DateInput 
+                            label="Data de recebimento" 
+                            name="date" 
+                            control={control} 
+                            rules={{
+                                required: true
+                            }}
+                        />
+
                         <ComboBoxInput
                             control={control}
                             name="method"
@@ -103,6 +110,7 @@ export default function EntriesForm ({ isVisible, onClose }: IEntriesForm) {
                             name="value"
                             label= "Valor recebido"
                             keyboardType="numeric"
+                            currency
                             rules={{required:"Insira um valor recebido", minValue: 3}}
                         />
                         

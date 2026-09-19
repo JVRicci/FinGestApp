@@ -45,7 +45,10 @@ export default function Layout() {
   }
 
   return (
-      <PaperProvider theme={paperTheme}>
+      <PaperProvider 
+        // theme={paperTheme}
+        theme = {MD3LightTheme}
+      >
         <StatusBar 
           backgroundColor="#f4511e"
           barStyle="dark-content"

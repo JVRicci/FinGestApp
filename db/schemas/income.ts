@@ -15,8 +15,7 @@ export const incomeModel = sqliteTable("incomes", {
     description: text("description")
         .notNull(),
     amount: integer().notNull(),
-    receivedDate: integer("received_date", { mode: "timestamp"})
-        .notNull(),
+    receivedDate: integer("received_date", { mode: "timestamp"}),
     category: text("category")
         .$type<frequency>()
         .default('daily')
