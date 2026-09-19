@@ -18,16 +18,13 @@ export const incomeModel = sqliteTable("incomes", {
     receivedDate: integer("received_date", { mode: "timestamp"})
         .notNull(),
     category: text("category")
+        .$type<frequency>()
+        .default('daily')
         .notNull(),
     status: text("status")
         .$type<status>()
         .default("pending")
         .notNull(),
-    frequency: text("frequency")
-        .$type<frequency>()
-        .default('daily')
-        .notNull(),
-
     paymentMethod: text("payment_method")
         .$type<paymentMethod>(),
 

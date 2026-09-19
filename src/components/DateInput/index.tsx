@@ -7,10 +7,10 @@ interface IDateInput<T extends FieldValues> {
     label: string,
     name: FieldPath<T>
     control: Control<T>
-    required?: boolean
+    rules?: {}
 }
 
-export default function DateInput<T extends FieldValues>({ label, name, control, required}: IDateInput<T>){
+export default function DateInput<T extends FieldValues>({ label, name, control, rules}: IDateInput<T>){
     const [ selectedDate, setSelectedDate ] = useState<Date>()
 
     return (
@@ -18,9 +18,7 @@ export default function DateInput<T extends FieldValues>({ label, name, control,
             <Controller 
                 name={name}
                 control={control}
-                rules={{ 
-                    required: required
-                }}
+                rules={ rules}
 
                 render={({ field: { onChange }, fieldState: { error } }) => (
                     <DatePickerInput 

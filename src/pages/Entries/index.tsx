@@ -30,9 +30,8 @@ export default function Entries() {
       .toLowerCase()
       .includes(search.toLowerCase())
   );
-  
+
   const movementsOrd: (BillsDTO | IncomeDTO)[] = movementsSorted(filteredIncomeList)
-  
 
   const handleAddEntry = () => {
     // router.push ("/entriesForm")
@@ -51,7 +50,7 @@ export default function Entries() {
 
       <Text className="text-2xl font-bold mx-14 mt-14">Entradas</Text>
 
-      <View>
+      <View >
         <ScrollView 
             horizontal={true}
             showsHorizontalScrollIndicator={false} 
@@ -64,7 +63,16 @@ export default function Entries() {
             })}
         </ScrollView>
 
-        <MovementList  movements={filteredIncomeList}/>
+        {
+          movementsOrd.length > 0 ? (
+            <MovementList  movements={movementsOrd}/>
+          ) : 
+          (
+            <View className="flex-1 justify-center items-center mt-14">
+              <Text className="text-xl text-gray-500">Nenhuma entrada encontrada</Text>
+            </View>
+          )
+        }
       </View>
 
       <TouchableOpacity 

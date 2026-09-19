@@ -12,7 +12,8 @@ interface IFormInputs {
     description: string,
     category: string,
     date: Date,
-    value: string
+    value: string,
+    method: string
 }
 
 interface IPeriodOptions {
@@ -25,6 +26,12 @@ const periodOptions: IPeriodOptions[] = [
     { label : "Semanal" , value : "semanal" },
     { label : "Mensal" , value : "mensal" },
     { label : "Anual" , value : "anual" }
+]
+
+const paymentMethodOptions: IPeriodOptions[] = [
+    { label : "Cartão de crédito" , value : "credit" },
+    { label : "Cartão de débito" , value : "debit" },
+    { label : "Dinheiro" , value : "cash" }
 ]
 
 interface IEntriesForm {
@@ -72,7 +79,7 @@ export default function EntriesForm ({ isVisible, onClose }: IEntriesForm) {
                             label="Data de recebimento" 
                             name="date" 
                             control={control} 
-                            required={true} 
+                            rules={{required: "Adicione uma data"}} 
                         />
                         
                         <ControlledInput 
@@ -82,13 +89,21 @@ export default function EntriesForm ({ isVisible, onClose }: IEntriesForm) {
                             rules={{required : "Adicione uma descrição", minLength: 4}}
                         />
                         
-
                         <ComboBoxInput
                             control={control}
                             name="category"
                             label="Categoria"
                             options={periodOptions}
                             placeholder="Categoria"
+                            required={true}
+                        />
+
+                        <ComboBoxInput
+                            control={control}
+                            name="method"
+                            label="Método de pagamento"
+                            options={paymentMethodOptions}
+                            placeholder="Método de pagamento"
                             required={true}
                         />
 
