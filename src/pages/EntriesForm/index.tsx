@@ -2,7 +2,6 @@ import ComboBoxInput from "@/components/ComboBoxInput"
 import ControlledInput from "@/components/ControlledInput"
 import DateInput from "@/components/DateInput"
 import dateFormatter from "@/utils/dateFormatter"
-import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Alert, Text, TouchableOpacity, View } from "react-native"
 import Modal from 'react-native-modal'
@@ -40,8 +39,6 @@ interface IEntriesForm {
 }
 
 export default function EntriesForm ({ isVisible, onClose }: IEntriesForm) {
-    const [ isModalVisible, setModalVisible ] = useState<boolean>(isVisible)
-
     const {control, handleSubmit, formState: {errors} } = useForm<IFormInputs>()
 
     const onSubmit = (data: IFormInputs) =>{ 
@@ -60,20 +57,14 @@ export default function EntriesForm ({ isVisible, onClose }: IEntriesForm) {
             onBackdropPress={ onClose }
             onBackButtonPress={ onClose }
             avoidKeyboard
-            style={{
-                flex: 1,
-                margin: 0,
-                justifyContent: "center",
-                alignItems: "center",
-            }}
+            className="flex-1 m-0 justify-center items-center"
         >
-
-                <PaperProvider>
-                    <View className="w-[90%] my-[65%] mx-auto bg-zinc-50 rounded-xl py-8">
-                        <View className="flex flex-row items-center gap-6 mb-8 justify-between px-14">
-                            <Text className="text-2xl text-bold">Adicionar receita</Text>
-                        </View>
-                    
+            <PaperProvider>
+                <View className=" my-[65%] mx-auto bg-zinc-50 rounded-xl py-8">
+                    <View className="flex flex-row items-center gap-6 mb-8 justify-between px-14">
+                        <Text className="text-2xl text-bold">Adicionar receita</Text>
+                    </View>
+                
                     <View className="ps-14 pe-14">
                         <DateInput 
                             label="Data de recebimento" 
@@ -125,7 +116,7 @@ export default function EntriesForm ({ isVisible, onClose }: IEntriesForm) {
                         </TouchableOpacity>
                     </View>
                 </View>
-                </PaperProvider>
+            </PaperProvider>
         </Modal>
     )
 }
