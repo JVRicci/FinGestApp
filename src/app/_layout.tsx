@@ -3,9 +3,12 @@ import { drizzle } from 'drizzle-orm/expo-sqlite';
 import { useMigrations } from 'drizzle-orm/expo-sqlite/migrator';
 import { Stack } from "expo-router";
 import { openDatabaseSync } from "expo-sqlite";
-import { ActivityIndicator, StatusBar, Text, View } from "react-native";
-import { Provider as PaperProvider } from 'react-native-paper';
+import { ActivityIndicator, LogBox, StatusBar, Text, useColorScheme, View } from "react-native";
+import { MD3DarkTheme, MD3LightTheme, Provider as PaperProvider } from 'react-native-paper';
 import { pt, registerTranslation } from 'react-native-paper-dates';
+
+// Silencia o aviso específico do InteractionManager
+LogBox.ignoreLogs(['InteractionManager has been deprecated']);
 
 import migrations from '../../drizzle/migrations';
 
@@ -16,6 +19,10 @@ export const db = drizzle(expoDb)
 registerTranslation('pt', pt)
 
 export default function Layout() {
+  const colorScheme = useColorScheme();
+
+  const paperTheme = colorScheme === 'dark' ? MD3DarkTheme : MD3LightTheme;
+
   // auto execute the initialization queries
   const { success, error } = useMigrations(db, migrations)
 
@@ -38,7 +45,7 @@ export default function Layout() {
   }
 
   return (
-      <PaperProvider>
+      <PaperProvider theme={paperTheme}>
         <StatusBar 
           backgroundColor="#f4511e"
           barStyle="dark-content"

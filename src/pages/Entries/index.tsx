@@ -2,17 +2,18 @@ import MovementList from "@/components/MovementList";
 import Periods from "@/components/Periods";
 import SearchTextInput from "@/components/SearchTextInput";
 import { incomes } from "@/data/incomes";
+import EntriesForm from "@/pages/EntriesForm";
 import { BillsDTO } from "@/schemas/billsDTO";
 import { IncomeDTO } from "@/schemas/incomeDTO";
 import movementsSorted from '@/utils/dateSort';
 import statusBarHeight from "@/utils/statusBarHeight";
-import { router } from "expo-router";
 import { useState } from 'react';
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 
 export default function Entries() {
   const [ selected, setSelected ] = useState<string>("Tudo")
   const [ search, setSearch ] = useState<string>("");
+  const [ modalOpen, setModalOpen ] = useState<boolean>(false)
 
   const periodList: string[] = [
     "Tudo", "30 dias", "15 dias", "7 dias", "Hoje"
@@ -34,7 +35,8 @@ export default function Entries() {
   
 
   const handleAddEntry = () => {
-    router.push ("/entriesForm")
+    // router.push ("/entriesForm")
+    setModalOpen(true);
   }
 
   return (
@@ -65,11 +67,16 @@ export default function Entries() {
         <MovementList  movements={filteredIncomeList}/>
       </View>
 
-      <TouchableOpacity className="absolute bottom-6 right-6 z-50 h-14 w-14 m-6 items-center justify-center rounded-full bg-purple-600 shadow-lg active:opacity-80"
+      <TouchableOpacity 
+        className="absolute bottom-6 right-6 z-50 h-14 w-14 m-6 items-center justify-center rounded-full bg-purple-600 shadow-lg active:opacity-80"
         onPress={handleAddEntry}>
         <Text className="text-white text-6xl">+</Text>
       </TouchableOpacity>
 
+      <EntriesForm 
+        isVisible={modalOpen}
+        onClose={() => setModalOpen(false)}
+      />
     </View>
   );
 }
