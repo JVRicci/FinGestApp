@@ -4,7 +4,6 @@ import Header from "@/components/Header";
 import MovementList from '@/components/MovementList';
 import { bills } from "@/data/bills";
 import { incomes } from "@/data/incomes";
-import IActionButtonData from '@/schemas/ActionButton';
 import { BillsDTO } from "@/schemas/billsDTO";
 import { IncomeDTO } from "@/schemas/incomeDTO";
 import movementsSorted from '@/utils/dateSort';
@@ -12,6 +11,12 @@ import { router } from "expo-router";
 import { useState } from "react";
 import { Text, View } from "react-native";
 
+interface IActionButtonData {
+    id: number;
+    icon: string;
+    label: string;
+    buttonFunction: () => void;
+}
 
 export default function Home() {
     const [username, setUsername] = useState('João Vitor');

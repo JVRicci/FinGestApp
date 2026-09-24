@@ -24,7 +24,7 @@ interface IDateInput<T extends FieldValues> {
 }
 
 export default function DateInput<T extends FieldValues>({ label, name, control, rules}: IDateInput<T>){
-    const [hasInvalidFormat, setHasInvalidFormat] = useState(false)
+    const [hasInvalidFormat, setHasInvalidFormat] = useState(false);
 
     return (
         <SafeAreaView>  

@@ -11,10 +11,11 @@ export const createIncome = async (data: NewIncome) =>{
         .returning()
 }
 
-export const listIncomes = async () => {
+export const listIncomes = async (id?: string) => {
     return db
         .select()
         .from(incomeModel)
+        .where(id ? eq(incomeModel.id, id) : undefined)
         .orderBy(desc(incomeModel.createdAt), )
 }
 

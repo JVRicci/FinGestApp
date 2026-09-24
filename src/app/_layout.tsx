@@ -50,8 +50,8 @@ export default function Layout() {
         theme = {MD3LightTheme}
       >
         <StatusBar 
-          backgroundColor="#f4511e"
-          barStyle="dark-content"
+          backgroundColor="transparent"
+          barStyle="light-content"
         />
         <Stack screenOptions={{ headerShown: false,  }} />
       </PaperProvider>

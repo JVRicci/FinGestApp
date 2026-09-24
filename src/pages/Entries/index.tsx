@@ -8,7 +8,7 @@ import { IncomeDTO } from "@/schemas/incomeDTO";
 import movementsSorted from '@/utils/dateSort';
 import statusBarHeight from "@/utils/statusBarHeight";
 import { useState } from 'react';
-import { ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { ScrollView, StatusBar, Text, TouchableOpacity, View } from "react-native";
 
 export default function Entries() {
   const [ selected, setSelected ] = useState<string>("Tudo")
@@ -40,6 +40,10 @@ export default function Entries() {
 
   return (
     <View style={{ paddingTop: statusBarHeight() }} className="flex-1 relative w-full items-stretch">
+      <StatusBar 
+        backgroundColor="transparent"
+        barStyle="dark-content"
+      />
       <View className="ps-10 pe-10 ">
         <SearchTextInput 
           value={search}
